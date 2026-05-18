@@ -5,11 +5,22 @@ async function loadRestaurantes() {
         const response = await fetch('data/restaurantes.json');
         if (!response.ok) throw new Error('Erro ao carregar dados');
         restaurantes = await response.json();
+        populateConcelhos();
         renderRestaurantes(restaurantes);
     } catch (error) {
         console.error('Erro:', error);
         listaRestaurantes.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 40px; color: #e74c3c;">Erro ao carregar os restaurantes. Tente novamente mais tarde.</p>';
     }
+}
+
+function populateConcelhos() {
+    const concelhos = [...new Set(restaurantes.map(r => r.localizacao))].sort();
+    concelhos.forEach(c => {
+        const option = document.createElement('option');
+        option.value = c;
+        option.textContent = c;
+        filtroConcelho.appendChild(option);
+    });
 }
 
 function renderEstrelas(avaliacao) {
@@ -58,10 +69,12 @@ function renderRestaurantes(restaurantesFiltrados) {
 function filtrarRestaurantes() {
     const tipo = filtroTipo.value;
     const preco = filtroPreco.value;
+    const localizacao = filtroConcelho.value;
     const filtrados = restaurantes.filter(r => {
         const matchTipo = tipo === 'todos' || r.categoria === tipo;
         const matchPreco = preco === 'todos' || r.preco === preco;
-        return matchTipo && matchPreco;
+        const matchLocal = localizacao === 'todos' || r.localizacao === localizacao;
+        return matchTipo && matchPreco && matchLocal;
     });
     renderRestaurantes(filtrados);
 }
@@ -96,6 +109,7 @@ function abrirModal(id) {
 const listaRestaurantes = document.getElementById('listaRestaurantes');
 const filtroTipo = document.getElementById('filtroTipo');
 const filtroPreco = document.getElementById('filtroPreco');
+const filtroConcelho = document.getElementById('filtroConcelho');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modal-body');
 const modalClose = document.querySelector('.modal-close');
@@ -105,5 +119,6 @@ modal.addEventListener('click', e => { if (e.target === modal) modal.classList.r
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) modal.classList.remove('show'); });
 filtroTipo.addEventListener('change', filtrarRestaurantes);
 filtroPreco.addEventListener('change', filtrarRestaurantes);
+filtroConcelho.addEventListener('change', filtrarRestaurantes);
 
 loadRestaurantes();
