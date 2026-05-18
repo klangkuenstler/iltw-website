@@ -14,11 +14,11 @@ async function loadRestaurantes() {
 }
 
 function populateConcelhos() {
-    const concelhos = [...new Set(restaurantes.map(r => r.localizacao))].sort();
-    concelhos.forEach(c => {
+    const regioes = ['Norte', 'Porto', 'Centro', 'Oeste', 'Lisboa', 'Sul', 'Ilhas'];
+    regioes.forEach(r => {
         const option = document.createElement('option');
-        option.value = c;
-        option.textContent = c;
+        option.value = r;
+        option.textContent = r;
         filtroConcelho.appendChild(option);
     });
 }
@@ -69,12 +69,12 @@ function renderRestaurantes(restaurantesFiltrados) {
 function filtrarRestaurantes() {
     const tipo = filtroTipo.value;
     const preco = filtroPreco.value;
-    const localizacao = filtroConcelho.value;
+    const regiao = filtroConcelho.value;
     const filtrados = restaurantes.filter(r => {
         const matchTipo = tipo === 'todos' || r.categoria === tipo;
         const matchPreco = preco === 'todos' || r.preco === preco;
-        const matchLocal = localizacao === 'todos' || r.localizacao === localizacao;
-        return matchTipo && matchPreco && matchLocal;
+        const matchRegiao = regiao === 'todos' || r.regiao === regiao;
+        return matchTipo && matchPreco && matchRegiao;
     });
     renderRestaurantes(filtrados);
 }
@@ -88,7 +88,7 @@ function abrirModal(id) {
         <span class="modal-categoria">${r.categoria}</span>
         <h2>${r.nome}</h2>
         <div class="modal-info">
-            <div class="modal-info-item">📍 ${r.localizacao}</div>
+            <div class="modal-info-item">📍 ${r.localizacao} (${r.regiao})</div>
             <div class="modal-info-item">⭐ ${r.avaliacao} ${renderEstrelas(r.avaliacao)}</div>
             <div class="modal-info-item">💰 ${formatPreco(r.preco)}</div>
         </div>
