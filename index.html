@@ -11,31 +11,63 @@
 <body>
 
     <nav class="navbar">
-
-        <div class="logo">
-            Catálogo de Restaurantes
-        </div>
-
+        <div class="logo" href="/">🍽️ GuiaRest</div>
         <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#restaurantes">Restaurantes</a></li>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#restaurantes">Restaurantes</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
-
     </nav>
-    <h1>Catálogo de Restaurantes</h1>
 
-    <select id="filtroTipo">
-        <option value="todos">Todos</option>
-        <option value="Italiano">Italiano</option>
-        <option value="Japonês">Japonês</option>
-        <option value="Hamburgueria">Hamburgueria</option>
-    </select>
+    <header class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Descubra os melhores restaurantes</h1>
+            <p>Explore a nossa seleção de restaurantes favoritos</p>
+            <a href="#restaurantes" class="btn-hero">Ver Restaurantes</a>
+        </div>
+    </header>
 
-    <div id="listaRestaurantes"></div>
+    <main>
+        <section class="filtros-section" id="restaurantes">
+            <h2>Nossos Restaurantes</h2>
+            <div class="filtros">
+                <select id="filtroTipo" class="filtro-select">
+                    <option value="todos">Todas as categorias</option>
+                    <option value="Marisco">Marisco</option>
+                    <option value="Português">Português</option>
+                    <option value="Japonês">Japonês</option>
+                    <option value="Italiano">Italiano</option>
+                    <option value="Hamburgueria">Hamburgueria</option>
+                    <option value="Brasileiro">Brasileiro</option>
+                    <option value="Tailandês">Tailandês</option>
+                    <option value="Francês">Francês</option>
+                    <option value="Mexicano">Mexicano</option>
+                </select>
+                <select id="filtroPreco" class="filtro-select">
+                    <option value="todos">Qualquer preço</option>
+                    <option value="economico">€ (Económico)</option>
+                    <option value="medio">€€ (Médio)</option>
+                    <option value="caro">€€€ (Caro)</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="restaurantes-grid" id="listaRestaurantes">
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 GuiaRest - Catálogo de Restaurantes</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
-
 </body>
 
 </html>

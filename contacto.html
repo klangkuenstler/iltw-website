@@ -1,58 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Restaurantes</title>
+    <title>Contacto - GuiaRest</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
     <nav class="navbar">
-
-        <div class="logo">
-            Catálogo de Restaurantes
-        </div>
-
+        <div class="logo">🍽️ GuiaRest</div>
         <ul class="nav-links">
             <li><a href="index.html">Início</a></li>
             <li><a href="index.html#restaurantes">Restaurantes</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
-
     </nav>
 
-    <main class="container">
-        <h1>Contacto</h1>
-        <form class="contact-form" id="contact-form">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h1>Entre em Contacto</h1>
+                <p>Temos todo o gosto em ajudá-lo. Preencha o formulário ou utilize os nossos canais directos.</p>
+
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <strong>Morada</strong>
+                        <p>Rua dos Restaurantes, 100<br>1200-000 Lisboa, Portugal</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@guiarest.pt</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <div>
+                        <strong>Telefone</strong>
+                        <p>+351 21 000 0000</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">⏰</span>
+                    <div>
+                        <strong>Horário</strong>
+                        <p>Seg-Sex: 9h-18h</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required placeholder="O seu nome">
+                    </div>
 
-            <div class="form-group">
-                <label for="assunto">Assunto</label>
-                <input type="text" id="assunto" name="assunto" required>
-            </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+                    </div>
 
-            <div class="form-group">
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-            </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone (opcional)</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="+351 000 000 000">
+                    </div>
 
-            <button type="submit" class="btn-submit">Enviar</button>
-        </form>
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="sugestao">Sugestão de restaurante</option>
+                            <option value="problema">Reportar problema</option>
+                            <option value="parceria">Proposta de parceria</option>
+                            <option value="outro">Outro assunto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Escreva a sua mensagem..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
     </main>
 
-    <script src="js/main.js"></script>
+    <footer class="footer">
+        <p>&copy; 2026 GuiaRest - Catálogo de Restaurantes</p>
+    </footer>
 
+    <script src="js/contacto.js"></script>
 </body>
 
 </html>
